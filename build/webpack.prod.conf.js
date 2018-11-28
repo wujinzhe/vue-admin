@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = () => {
   return merge(baseWebpack, {
+    mode: 'development',
     stats: {
       all: false,
       timings: true,
@@ -43,17 +44,5 @@ module.exports = () => {
       //   manifest: require(path.resolve(__dirname, '../library/library.json'))
       // })
     ]
-    // optimization: {
-    //   splitChunks: {
-    //     minChunks: Infinity
-    //     // cacheGroups: {
-    //     //   common: {
-    //     //     test: /[\\/]node_modules[\\/]/,
-    //     //     name: 'common',
-    //     //     chunks: 'all'
-    //     //   }
-    //     // }
-    //   }
-    // }
   })
 }

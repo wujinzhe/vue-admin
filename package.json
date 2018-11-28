@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --progress --inline  --config ./build/webpack.dev.conf.js",
-    "build": "webpack --mode production --progress --config ./build/webpack.prod.conf.js",
-    "dll": "webpack --mode production --progress --config ./build/webpack.library.conf.js",
+    "build": "webpack --progress --config ./build/webpack.prod.conf.js",
+    "dll": "webpack --progress --config ./build/webpack.library.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint --ext .js,.vue src",
     "stylelint": "stylelint --fix src"
@@ -40,15 +40,15 @@
     "get-port": "^4.0.0",
     "get-stream": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.2",
     "minimist": "^1.2.0",
+    "node-sass": "^4.10.0",
     "ora": "^3.0.0",
     "portfinder": "^1.0.17",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-pxtorem": "^4.0.1",
+    "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.0",
     "style-loader": "^0.21.0",
     "stylelint": "^9.5.0",
@@ -69,6 +69,7 @@
   "dependencies": {
     "ant-design-vue": "^1.1.8",
     "axios": "^0.18.0",
+    "element-ui": "^2.4.11",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

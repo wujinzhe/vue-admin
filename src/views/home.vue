@@ -1,71 +1,20 @@
 <template>
   <div>
-    <a-date-picker @change="onChange" />
-    <a-month-picker
-      @change="onChange"
-      placeholder="Select month" />
-    <a-button
-      type="primary"
-      @click="click">Primary</a-button>
+    <div>
+      <el-button>默认按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="success">成功按钮</el-button>
+      <el-button type="info">信息按钮</el-button>
+      <el-button type="warning">警告按钮</el-button>
+      <el-button type="danger">危险按钮</el-button>
+    </div>
 
-    <a-dropdown>
-      <a
-        class="ant-dropdown-link"
-        href="#">
-        Hover me <a-icon type="down" />
-      </a>
-      <a-menu slot="overlay">
-        <a-menu-item>
-          <a href="javascript:;">1st menu item</a>
-        </a-menu-item>
-        <a-menu-item>
-          <a href="javascript:;">2nd menu item</a>
-        </a-menu-item>
-        <a-menu-item>
-          <a href="javascript:;">3rd menu item</a>
-        </a-menu-item>
-      </a-menu>
-    </a-dropdown>
+    <div style="margin-top: 10px;">
+      <el-date-picker
+        type="date"
+        placeholder="选择日期"/>
+    </div>
   </div>
-  <!-- <a-layout id="components-layout-demo-custom-trigger">
-    <a-layout-sider
-      :trigger="null"
-      collapsible
-      v-model="collapsed"
-    >
-      <div class="logo" />
-      <a-menu
-        theme="dark"
-        mode="inline"
-        :default-selected-keys="['1']">
-        <a-menu-item key="1">
-          <a-icon type="user" />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <a-icon type="video-camera" />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <a-icon type="upload" />
-          <span>nav 3</span>
-        </a-menu-item>
-      </a-menu>
-    </a-layout-sider>
-    <a-layout>
-      <a-layout-header style="background: #ffffff; padding: 0;">
-        <a-icon
-          class="trigger"
-          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="()=> collapsed = !collapsed"
-        />
-      </a-layout-header>
-      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
-        Content
-        <a-date-picker/>
-      </a-layout-content>
-    </a-layout>
-  </a-layout> -->
 </template>
 <script>
 // import { datePicker } from 'ant-design-vue'

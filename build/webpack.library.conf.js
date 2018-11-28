@@ -1,9 +1,10 @@
 const webpack = require('webpack')
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   context: process.cwd(),
+  mode: 'development',
   resolve: {
     extensions: ['.js', '.less', 'json'],
     modules: ['node_modules']
@@ -13,9 +14,8 @@ module.exports = {
       'vue/dist/vue.esm.js',
       'vue-router',
       'vuex',
-      'axios'
-      // 'ant-design-vue',
-      // 'moment'
+      'axios',
+      'element-ui'
     ]
   },
   output: {
@@ -36,10 +36,10 @@ module.exports = {
     new webpack.DllPlugin({
       name: '[name]',
       path: './library/[name].json'
-    }),
-    new CleanWebpackPlugin(['dist/*'], {
-      root: path.resolve(__dirname, '../'),
-      verbose: false
     })
+    // new CleanWebpackPlugin(['library/*'], {
+    //   root: path.resolve(__dirname, '../'),
+    //   verbose: false
+    // })
   ]
 }

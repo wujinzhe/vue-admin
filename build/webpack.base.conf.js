@@ -47,24 +47,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.less$/,
+        test: /\.scss$/,
         use: [
           process.env.NODE_ENV !== 'production'
             ? 'vue-style-loader'
             : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
           {
-            loader: 'less-loader',
-            options: {
-              javascriptEnabled: true
-            }
+            loader: 'css-loader'
+            // options: {
+            //   modules: true,
+            //   localIdentName: '[path][name]__[local]--[hash:base64:5]'
+            // }
           },
+          'postcss-loader',
+          'sass-loader',
           {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                path.resolve(__dirname, '../src/theme/default/variables.less')
+                path.resolve(__dirname, '../src/theme/default/variables.scss')
               ]
             }
           }
