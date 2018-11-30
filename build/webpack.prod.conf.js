@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = () => {
   return merge(baseWebpack, {
-    mode: 'development',
+    mode: 'production',
     stats: {
       all: false,
       timings: true,

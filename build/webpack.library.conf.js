@@ -4,10 +4,25 @@ const path = require('path')
 
 module.exports = {
   context: process.cwd(),
-  mode: 'development',
+  mode: 'production',
   resolve: {
     extensions: ['.js', '.less', 'json'],
     modules: ['node_modules']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+        loader: 'url-loader?limit=3024'
+      }
+    ]
   },
   entry: {
     library: [
@@ -15,7 +30,8 @@ module.exports = {
       'vue-router',
       'vuex',
       'axios',
-      'element-ui'
+      'element-ui',
+      path.resolve(__dirname, '../src/theme/default/variables.scss')
     ]
   },
   output: {

@@ -51,7 +51,7 @@ export default {
       height: 59px;
       line-height: 60px;
       white-space: 5px;
-      background-color: $--color-primary;
+      background-color: #ff9800;
       color: white;
       font-size: 30px;
       font-style: italic;
