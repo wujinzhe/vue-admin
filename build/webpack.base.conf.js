@@ -10,7 +10,7 @@ module.exports = {
   entry: path.resolve(__dirname, '../src/main.js'),
   output: {
     path: path.resolve(__dirname, '../dist/'),
-    filename: 'js/[name].[chunkhash:6].js'
+    filename: 'js/[name].[hash:6].js'
   },
   module: {
     rules: [
@@ -91,7 +91,7 @@ module.exports = {
       chunksSortMode: 'dependency'
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[chunkhash:6].css'
+      filename: 'css/[name].[hash:6].css'
     }),
     // vue-loader 必须引入的插件
     new VueLoaderPlugin(),

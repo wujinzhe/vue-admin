@@ -31,18 +31,12 @@ module.exports = () => {
         {
           from: 'static/',
           to: 'static'
-        }
-      ]),
-      new CopyWebpackPlugin([
+        },
         {
-          from: 'library/library.js',
-          to: ''
+          from: 'library/',
+          to: 'library'
         }
       ])
-      // new webpack.DllReferencePlugin({
-      //   // context: __dirname,
-      //   manifest: require(path.resolve(__dirname, '../library/library.json'))
-      // })
     ]
   })
 }

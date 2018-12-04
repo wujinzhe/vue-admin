@@ -1,5 +1,3 @@
-// http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
   root: true,
   parserOptions: {
@@ -11,9 +9,7 @@ module.exports = {
     browser: true,
   },
   extends: [
-    'plugin:vue/base',
-    'plugin:vue/essential',
-    'plugin:vue/strongly-recommended',
+    'plugin:vue/recommended',
     'standard'
   ],
   // required to lint *.vue files

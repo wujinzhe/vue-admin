@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
-// const CleanWebpackPlugin = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   context: process.cwd(),
@@ -14,13 +15,22 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
       },
       {
         test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader?limit=3024'
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 3024,
+              name: 'element-ui.[ext]'
+            }
+          }
+        ]
       }
     ]
   },
@@ -52,10 +62,13 @@ module.exports = {
     new webpack.DllPlugin({
       name: '[name]',
       path: './library/[name].json'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
+    new CleanWebpackPlugin(['library/*'], {
+      root: path.resolve(__dirname, '../'),
+      verbose: false
     })
-    // new CleanWebpackPlugin(['library/*'], {
-    //   root: path.resolve(__dirname, '../'),
-    //   verbose: false
-    // })
   ]
 }

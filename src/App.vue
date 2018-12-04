@@ -17,6 +17,7 @@
         <div class="router-view">
           <router-view/>
         </div>
+        <a href=""/>
       </el-main>
     </el-container>
   </el-container>
@@ -35,6 +36,12 @@ export default {
   data () {
     return {
       collapsed: false
+    }
+  },
+  methods: {
+    aa () {
+      // console.log('dd')
+      // console.log(bb)
     }
   }
 }

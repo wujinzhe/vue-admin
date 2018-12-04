@@ -1,7 +1,8 @@
 module.exports = { 
   extends: ["stylelint-config-standard"],
-  plugins: ["stylelint-order"],
+  plugins: [],
   rules: {
+    // 颜色使用color: #000000 6位数字
     "color-hex-length": "long",
     "max-nesting-depth": 2,
     // 去掉小数点前面的 0
@@ -11,5 +12,5 @@ module.exports = {
     "string-quotes": "double",
     // 属性值为 0 后面不加单位
     "length-zero-no-unit": true,
-  } 
+  }
 }

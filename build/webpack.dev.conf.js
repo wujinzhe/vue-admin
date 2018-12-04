@@ -3,15 +3,19 @@ const path = require('path')
 const baseWebpack = require('./webpack.base.conf')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const webpack = require('webpack')
 
 module.exports = () => {
   const devWebpackConfig = merge(baseWebpack, {
-    watch: true,
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ],
     devServer: {
       clientLogLevel: 'warning',
       port: 8080,
       host: '0.0.0.0',
       quiet: true,
+      hot: true,
       compress: true, // 一切服务都是用gzip压缩
       // 配置静态文件目录
       contentBase: [path.resolve(__dirname, '../static'), path.resolve(__dirname, '../library')],
