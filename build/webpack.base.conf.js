@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 process.env.NODE_ENV = 'development'
 
@@ -101,6 +102,16 @@ module.exports = {
     }),
     new webpack.DllReferencePlugin({
       manifest: require(path.resolve(__dirname, '../library/library.json'))
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'static/',
+        to: 'static'
+      },
+      {
+        from: 'library/',
+        to: 'library'
+      }
+    ])
   ]
 }

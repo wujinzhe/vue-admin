@@ -6,6 +6,7 @@ import './theme/default/variables.scss'
 import ElementUI from 'element-ui'
 Vue.use(ElementUI)
 
+Vue.config.devtools = true
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

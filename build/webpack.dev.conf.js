@@ -1,5 +1,4 @@
 const merge = require('webpack-merge')
-const path = require('path')
 const baseWebpack = require('./webpack.base.conf')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
@@ -7,6 +6,7 @@ const webpack = require('webpack')
 
 module.exports = () => {
   const devWebpackConfig = merge(baseWebpack, {
+    devtool: 'cheap-eval-source-map',
     plugins: [
       new webpack.HotModuleReplacementPlugin()
     ],
@@ -18,7 +18,7 @@ module.exports = () => {
       hot: true,
       compress: true, // 一切服务都是用gzip压缩
       // 配置静态文件目录
-      contentBase: [path.resolve(__dirname, '../static'), path.resolve(__dirname, '../library')],
+      contentBase: false,
       // watchContentBase: true,
       // 提供在服务器内部的所有其他中间件之后执行自定义中间件的能力。
       // after (app) {
@@ -51,6 +51,7 @@ module.exports = () => {
       // 打开页面的路由
       // openPage: 'demo',
       // publicPath: '/static'
+      useLocalIp: true,
       stats: {
         all: false,
         timings: true,

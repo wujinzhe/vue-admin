@@ -1,17 +1,13 @@
 <template>
-  <el-container
-    id="app">
+  <el-container id="app">
     <el-aside
       class="aside"
       width="200px">
-      <div class="logo">
-        logo
-      </div>
-      <main-menu/>
+      <the-app-menu/>
     </el-aside>
     <el-container>
-      <el-header>
-        <main-header/>
+      <el-header style="height: 64px;">
+        <the-app-header/>
       </el-header>
       <el-main class="main">
         <div class="router-view">
@@ -24,24 +20,17 @@
 </template>
 
 <script>
-import mainMenu from '@/views/main/menu'
-import mainHeader from '@/views/main/header'
+import TheAppHeader from '@/components/TheAppHeader'
+import TheAppMenu from '@/components/TheAppMenu'
 
 export default {
   name: 'App',
   components: {
-    mainMenu,
-    mainHeader
+    TheAppHeader,
+    TheAppMenu
   },
   data () {
     return {
-      collapsed: false
-    }
-  },
-  methods: {
-    aa () {
-      // console.log('dd')
-      // console.log(bb)
     }
   }
 }
@@ -49,14 +38,15 @@ export default {
 
 <style lang="scss" scoped>
   .main {
-    background-color: #eeeeee;
+    background-color: #f0f2f5;
     display: flex;
+    padding: 24px 16px;
   }
 
   .aside {
     .logo {
-      height: 59px;
-      line-height: 60px;
+      height: 64px;
+      line-height: 64px;
       white-space: 5px;
       background-color: #ff9800;
       color: white;

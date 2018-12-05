@@ -41,7 +41,9 @@ module.exports = {
       'vuex',
       'axios',
       'element-ui',
-      path.resolve(__dirname, '../src/theme/default/variables.scss')
+      path.resolve(__dirname, '../src/theme/default/variables.scss'),
+      path.resolve(__dirname, '../src/theme/common.scss'),
+      path.resolve(__dirname, '../src/theme/reset.scss')
     ]
   },
   output: {
