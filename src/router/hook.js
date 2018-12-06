@@ -4,7 +4,7 @@
 
 export default {
   beforeEach: (to, from, next) => {
-    console.log('hook')
+    // console.log('hook')
     next()
   }
 }

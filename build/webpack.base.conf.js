@@ -5,7 +5,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
-process.env.NODE_ENV = 'development'
+// process.env.NODE_ENV = 'development'
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/main.js'),

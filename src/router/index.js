@@ -3,7 +3,7 @@ import hook from './hook'
 import Router from 'vue-router'
 console.log(window.apps)
 
-console.log(window.apps.app2._router.options.routes)
+// console.log(window.apps.app2._router.options.routes)
 
 // import menu from './menu'
 
@@ -17,7 +17,9 @@ var router = new Router({
       name: 'Home',
       component: () => import('../views/ViewHome.vue')
     },
-    ...window.apps.app2._router.options.routes
+    ...window.apps.app2._router.options.routes,
+    ...window.apps.app1._router.options.routes
+
   ]
 })
 
