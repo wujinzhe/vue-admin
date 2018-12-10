@@ -12,6 +12,7 @@
       <el-submenu
         v-for="(item, index) in menuList"
         :key="index"
+        :index="index"
       >
         <template slot="title">
           <i class="el-icon-location"/>

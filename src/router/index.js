@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import hook from './hook'
 import Router from 'vue-router'
-console.log(window.apps)
+const apps = window.apps
+console.log('注册的应用', window.apps)
+const routeList = []
 
-// console.log(window.apps.app2._router.options.routes)
-
-// import menu from './menu'
+for (let app in apps) {
+  console.log(app)
+  routeList.push(...apps[app].options.routes)
+}
 
 Vue.use(Router)
 
@@ -17,8 +20,7 @@ var router = new Router({
       name: 'Home',
       component: () => import('../views/ViewHome.vue')
     },
-    ...window.apps.app2._router.options.routes,
-    ...window.apps.app1._router.options.routes
+    ...routeList
 
   ]
 })
