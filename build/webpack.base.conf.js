@@ -4,8 +4,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const webpack = require('webpack')
-// process.env.NODE_ENV = 'development'
+const config = require('../config/')
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/main.js'),
@@ -53,23 +54,9 @@ module.exports = {
           process.env.NODE_ENV !== 'production'
             ? 'vue-style-loader'
             : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader'
-            // options: {
-            //   modules: true,
-            //   localIdentName: '[path][name]__[local]--[hash:base64:5]'
-            // }
-          },
+          'css-loader',
           'postcss-loader',
           'sass-loader'
-          // {
-          //   loader: 'sass-resources-loader',
-          //   options: {
-          //     resources: [
-          //       path.resolve(__dirname, '../src/theme/default/variables.scss')
-          //     ]
-          //   }
-          // }
         ]
       },
       {
@@ -88,8 +75,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: `index.html`,
-      template: `index.html`,
-      chunksSortMode: 'dependency'
+      template: `index.html`
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash:6].css'
@@ -112,6 +98,13 @@ module.exports = {
         from: 'node_modules/vue-admin-library/lib/',
         to: 'library'
       }
-    ])
+    ]),
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: process.env.NODE_ENV !== 'production'
+        ? config.dev.urlList
+        : config.prod.urlList,
+      append: false,
+      hash: true
+    })
   ]
 }

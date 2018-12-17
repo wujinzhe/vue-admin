@@ -13,7 +13,7 @@
     <div class="header-operate">
       <el-dropdown trigger="click">
         <span class="name-link">
-          张三疯了<i class="el-icon-arrow-down el-icon--right"/>
+          张三疯了111<i class="el-icon-arrow-down el-icon--right"/>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>

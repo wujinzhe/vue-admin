@@ -7,7 +7,7 @@ const routeList = []
 
 for (let app in apps) {
   console.log(app)
-  routeList.push(...apps[app].options.routes)
+  routeList.push(...apps[app].router.options.routes)
 }
 
 Vue.use(Router)
