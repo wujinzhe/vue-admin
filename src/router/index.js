@@ -21,7 +21,6 @@ var router = new Router({
       component: () => import('../views/ViewHome.vue')
     },
     ...routeList
-
   ]
 })
 
