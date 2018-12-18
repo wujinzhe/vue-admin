@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const baseWebpack = require('./webpack.base.conf')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = () => {
   return merge(baseWebpack, {
@@ -25,7 +26,13 @@ module.exports = () => {
       new CleanWebpackPlugin(['dist/*'], {
         root: path.resolve(__dirname, '../'),
         verbose: false
-      })
+      }),
+      new CopyWebpackPlugin([
+        {
+          from: 'lib/common',
+          to: 'common'
+        }
+      ])
     ]
   })
 }

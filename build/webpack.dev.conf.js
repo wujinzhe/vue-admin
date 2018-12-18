@@ -4,6 +4,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const webpack = require('webpack')
 const config = require('../config/')
+const path = require('path')
 
 module.exports = () => {
   const devWebpackConfig = merge(baseWebpack, {
@@ -22,8 +23,13 @@ module.exports = () => {
       host: '0.0.0.0',
       quiet: true,
       hot: true,
+      hotOnly: true,
       compress: true, // 一切服务都是用gzip压缩
-      contentBase: false, // 配置静态文件目录
+      contentBase: path.resolve(__dirname, '../lib/'), // 配置静态文件目录
+      watchContentBase: true, // 监听contentBase下的文件
+      watchOptions: {
+        poll: true
+      },
       proxy: config.dev.proxy,
       // 开启服务器时，打开浏览器
       open: true,
@@ -31,15 +37,7 @@ module.exports = () => {
         warnings: true,
         errors: true
       },
-      useLocalIp: true,
-      stats: {
-        all: false,
-        timings: true,
-        version: true,
-        builtAt: true,
-        assets: true,
-        assetsSort: 'field'
-      }
+      useLocalIp: true
     }
   })
 

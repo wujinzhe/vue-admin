@@ -1,7 +1,7 @@
 module.exports = {
   dev: {
     urlList: [
-      'http://172.30.61.123/vue-admin-app2/dist/js/associate.js',
+      'http://172.30.61.123/vue-admin-app2/dist/js/associate.js'
     ],
     proxy: {
       '/api/mbp/': {
@@ -15,7 +15,7 @@ module.exports = {
   },
   prod: {
     urlList: [
-      'http://172.30.61.123:8085/js/router.js',
+      'http://172.30.61.123/vue-admin-app2/dist/js/associate.js'
     ]
   }
 }

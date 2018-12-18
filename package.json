@@ -1,18 +1,24 @@
 {
   "name": "vue-admin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --progress --inline  --config ./build/webpack.dev.conf.js",
     "build": "webpack --progress --config ./build/webpack.prod.conf.js",
-    "dll": "webpack --progress --config ./build/webpack.library.conf.js",
+    "dll": "webpack --progress --config ./build/package/webpack.library.conf.js",
+    "layout": "webpack --progress --config ./build/package/webpack.layout.conf.js",
+    "axios": "webpack --progress --config ./build/package/webpack.axios.conf.js",
+    "all": "webpack --progress --config ./build/package/webpack.all.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint --ext .js,.vue src",
     "stylelint": "stylelint --fix src"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [],
-  "author": "",
+  "author": "wujinzhe@iboxpay.com",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",

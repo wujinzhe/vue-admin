@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import TheAppLayout from 'vue-admin-layout'
+import TheAppLayout from '@/components/TheAppLayout'
 console.log('TheAppLayout', TheAppLayout)
 
 export default {

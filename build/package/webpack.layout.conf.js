@@ -1,18 +1,19 @@
+const webpack = require('webpack')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const StyleLintPlugin = require('stylelint-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
-const webpack = require('webpack')
-const config = require('../config/')
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/main.js'),
+  mode: 'production',
+  entry: path.resolve(__dirname, '../../src/packages/layout.js'),
   output: {
-    path: path.resolve(__dirname, '../dist/'),
-    filename: 'js/[name].[hash:6].js'
+    path: path.resolve(__dirname, '../../lib/'),
+    filename: 'Layout.js',
+    library: 'Layout',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
@@ -72,10 +73,25 @@ module.exports = {
       '@': path.resolve(__dirname, '../src')
     }
   },
+  stats: {
+    all: false,
+    timings: true,
+    version: true,
+    builtAt: true,
+    errors: true,
+    assets: true,
+    assetsSort: 'field'
+  },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: `index.html`,
-      template: `index.html`
+    // 定义该环境下的全局变量
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': '"production"'
+      }
+    }),
+    new CleanWebpackPlugin(['lib/Layout.js'], {
+      root: path.resolve(__dirname, '../../'),
+      verbose: false
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash:6].css'
@@ -85,22 +101,6 @@ module.exports = {
     // 验证css的插件
     new StyleLintPlugin({
       files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}']
-    }),
-    new webpack.DllReferencePlugin({
-      manifest: require('../lib/common/library.json')
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: 'static/',
-        to: 'static'
-      }
-    ]),
-    new HtmlWebpackIncludeAssetsPlugin({
-      assets: process.env.NODE_ENV !== 'production'
-        ? config.dev.urlList
-        : config.prod.urlList,
-      append: false,
-      hash: true
     })
   ]
 }
