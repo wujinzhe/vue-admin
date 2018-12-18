@@ -1,7 +1,8 @@
 {
-  "name": "vue-admin",
+  "name": "vue-admin-main",
   "version": "0.1.0",
-  "description": "",
+  "description": "vue-admin-main",
+  "public": true,
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --progress --inline  --config ./build/webpack.dev.conf.js",
@@ -18,7 +19,7 @@
     "lib"
   ],
   "keywords": [],
-  "author": "wujinzhe@iboxpay.com",
+  "author": "wujinzhe",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -31,6 +32,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^0.28.11",
+    "cssnano": "^4.1.7",
     "download": "^7.1.0",
     "eslint": "^5.4.0",
     "eslint-config-standard": "^12.0.0-alpha.0",
@@ -51,6 +53,7 @@
     "mini-css-extract-plugin": "^0.4.2",
     "minimist": "^1.2.0",
     "node-sass": "^4.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "ora": "^3.0.0",
     "portfinder": "^1.0.17",
     "postcss-import": "^12.0.1",
@@ -78,8 +81,6 @@
     "axios": "^0.18.0",
     "element-ui": "^2.4.11",
     "vue": "^2.5.16",
-    "vue-admin-layout": "0.0.2",
-    "vue-admin-library": "0.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   }

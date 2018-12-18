@@ -4,6 +4,7 @@ const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const baseWebpack = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = () => {
   return merge(baseWebpack, {
@@ -32,7 +33,14 @@ module.exports = () => {
           from: 'lib/common',
           to: 'common'
         }
-      ])
+      ]),
+      new OptimizeCssAssetsPlugin({
+        cssProcessor: require('cssnano'),
+        cssProcessorPluginOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }]
+        },
+        canPrint: false
+      })
     ]
   })
 }

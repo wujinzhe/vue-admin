@@ -13,7 +13,7 @@
     <div class="header-operate">
       <el-dropdown trigger="click">
         <span class="name-link">
-          张三疯了111<i class="el-icon-arrow-down el-icon--right"/>
+          {{ userName }}<i class="el-icon-arrow-down el-icon--right"/>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
@@ -26,7 +26,6 @@
 
 <script>
 function getPath (path, routes) {
-  // console.log(path)
   let routerArray = path.split('/')
   let origin = routerArray.shift() // 拉出第一个元素，因为是''
   let currentPath = []
@@ -46,11 +45,16 @@ function getPath (path, routes) {
       }
     })
   }
-  // console.log(currentPath)
   return currentPath
 }
 export default {
   name: 'TheAppHeader',
+  props: {
+    userName: {
+      type: String,
+      default: '测试调试'
+    }
+  },
   data () {
     return {
       breadcrumbList: []
@@ -60,13 +64,6 @@ export default {
     '$route' () {
       this.changeRouter()
     }
-  },
-  mounted () {
-    // this.$nextTick(() => {
-    //   setTimeout(() => {
-    //     this.changeRouter()
-    //   }, 100)
-    // })
   },
   methods: {
     changeRouter () {

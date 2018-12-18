@@ -7,7 +7,7 @@
     </el-aside>
     <el-container>
       <el-header style="height: 64px;">
-        <the-app-header/>
+        <the-app-header v-bind="this.$attrs"/>
       </el-header>
       <el-main class="main">
         <div class="router-view">

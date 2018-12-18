@@ -1,5 +1,5 @@
 <template>
-  <the-app-layout/>
+  <the-app-layout user-name="德玛西亚"/>
 </template>
 
 <script>
