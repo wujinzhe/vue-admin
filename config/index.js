@@ -1,7 +1,7 @@
 module.exports = {
   dev: {
     urlList: [
-      'http://172.30.61.123/vue-admin-app2/dist/js/associate.js'
+      'http://localhost:8083/js/associate.js'
     ],
     proxy: {
       '/api/mbp/': {

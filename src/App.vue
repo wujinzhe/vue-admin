@@ -10,6 +10,11 @@ export default {
   name: 'App',
   components: {
     TheAppLayout
+  },
+  created () {
+    this.$Http.getMchtDetailList({}).then(resp => {
+      console.log(resp.aaa)
+    })
   }
 }
 </script>

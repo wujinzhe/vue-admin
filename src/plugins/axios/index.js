@@ -13,13 +13,16 @@ let options = {
 // 根据配置创建axios
 let axios = _axios.create(options)
 
+// let interceptorsError = null // 拦截器错误
+
 // http request 请求拦截器
 axios.interceptors.request.use(
   request => {
     return request
   },
   err => {
-    return Promise.reject(err)
+    console.error('[error][request拦截错误]', err.message)
+    return Promise.reject(new Error('服务器请求错误'))
   }
 )
 
@@ -31,7 +34,8 @@ axios.interceptors.response.use(
   },
   err => {
     // _config.response.err(err)
-    return Promise.reject(err)
+    console.error('[error][response拦截错误]', err.message)
+    return Promise.reject(new Error('服务器响应错误'))
   }
 )
 
@@ -39,7 +43,6 @@ function request (method, url, data, config) {
   // 所需请求的参数
   let _data = {
     params: {
-      access_token: Vue.prototype.$Util.getAccessToken(),
       ...data
     }
   }
@@ -60,11 +63,17 @@ function request (method, url, data, config) {
     // 判断条件是否符合
     if (resp.data.returnCode === '0') {
       return resp.data
+    } else if (resp.data.returnCode === '1006') {
+      // 登录状态失效，跳转登录
+      return
     }
 
     throw resp.data.errorInfo || '服务器异常，请重试' // 因为只有throw才会抛到下面的catch中
   }).catch(err => {
-    Promise.reject(new Error('[盒伙人运管 请求错误]', err))
+    console.error('[error][盒伙人运管 网络请求错误]', err.message)
+    // return new Promise()
+    Vue.prototype.$message.error(err.message)
+    Promise.reject(new Error(err))
   })
 }
 let axiosInstance = {}
