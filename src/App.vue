@@ -4,7 +4,6 @@
 
 <script>
 import TheAppLayout from '@/components/TheAppLayout'
-console.log('TheAppLayout', TheAppLayout)
 
 export default {
   name: 'App',
@@ -12,9 +11,14 @@ export default {
     TheAppLayout
   },
   created () {
-    this.$Http.getMchtDetailList({}).then(resp => {
-      console.log(resp.aaa)
-    })
+    // this.getLabelType()
+  },
+  methods: {
+    getLabelType () {
+      this.$Http.getLabelType({}).then(resp => {
+        console.log(resp)
+      })
+    }
   }
 }
 </script>

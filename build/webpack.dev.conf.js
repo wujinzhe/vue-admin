@@ -23,7 +23,6 @@ module.exports = () => {
       host: '0.0.0.0',
       quiet: true,
       hot: true,
-      hotOnly: true,
       compress: true, // 一切服务都是用gzip压缩
       contentBase: path.resolve(__dirname, '../lib/'), // 配置静态文件目录
       watchContentBase: true, // 监听contentBase下的文件

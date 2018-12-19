@@ -34,8 +34,8 @@ axios.interceptors.response.use(
   },
   err => {
     // _config.response.err(err)
-    console.error('[error][response拦截错误]', err.message)
-    return Promise.reject(new Error('服务器响应错误'))
+    let status = err.response.status || ''
+    return Promise.reject(new Error(err.response.data.errorInfo || `【${status}】服务器响应错误`))
   }
 )
 
@@ -63,17 +63,16 @@ function request (method, url, data, config) {
     // 判断条件是否符合
     if (resp.data.returnCode === '0') {
       return resp.data
-    } else if (resp.data.returnCode === '1006') {
+    } else if (resp.data.errorNo === '1006') {
       // 登录状态失效，跳转登录
-      return
+      return new Promise((resolve, reject) => {}) // 返回一个永远不响应的promise
     }
 
-    throw resp.data.errorInfo || '服务器异常，请重试' // 因为只有throw才会抛到下面的catch中
+    throw new Error(resp.data.errorInfo || '服务器异常，请重试') // 因为只有throw才会抛到下面的catch中
   }).catch(err => {
     console.error('[error][盒伙人运管 网络请求错误]', err.message)
-    // return new Promise()
     Vue.prototype.$message.error(err.message)
-    Promise.reject(new Error(err))
+    throw err
   })
 }
 let axiosInstance = {}

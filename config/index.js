@@ -5,7 +5,7 @@ module.exports = {
     ],
     proxy: {
       '/api/mbp/': {
-        target: 'http://172.30.2.13:8080/mbp-gateway/', // 开发环境
+        target: 'http://172.30.2.10:8080/mbp-gateway/os-mbp/', // 开发环境
         changeOrigin: true,
         pathRewrite: {
           '^/api/mbp/': ''

@@ -1,17 +1,14 @@
 const webpack = require('webpack')
-const StyleLintPlugin = require('stylelint-webpack-plugin')
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   mode: 'production',
-  entry: path.resolve(__dirname, '../src/packages/layout.js'),
+  entry: path.resolve(__dirname, '../../src/packages/axios.js'),
   output: {
-    path: path.resolve(__dirname, '../lib/'),
-    filename: 'Layout.js',
-    library: 'Layout',
+    path: path.resolve(__dirname, '../../lib/'),
+    filename: 'axios.js',
+    library: 'axios',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -35,42 +32,13 @@ module.exports = {
         options: {
           cacheDirectory: true
         }
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          process.env.NODE_ENV !== 'production'
-            ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-        loader: 'url-loader?limit=3024'
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js'],
     alias: {
-      'vue': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, '../src')
+      'vue': 'vue/dist/vue.esm.js'
     }
   },
   stats: {
@@ -89,18 +57,12 @@ module.exports = {
         'NODE_ENV': '"production"'
       }
     }),
-    new CleanWebpackPlugin(['lib/*'], {
-      root: path.resolve(__dirname, '../'),
+    new webpack.DllReferencePlugin({
+      manifest: require('../../lib/common/library.json')
+    }),
+    new CleanWebpackPlugin(['lib/axios.js'], {
+      root: path.resolve(__dirname, '../../'),
       verbose: false
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash:6].css'
-    }),
-    // vue-loader 必须引入的插件
-    new VueLoaderPlugin(),
-    // 验证css的插件
-    new StyleLintPlugin({
-      files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}']
     })
   ]
 }

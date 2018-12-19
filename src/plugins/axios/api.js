@@ -6,5 +6,7 @@ export default {
   /** 获取弹窗提醒 */
   getPopupNotify: data => axios.post('/huiShop/v1/getPopupNotify', data),
   /** 展示商户数量 */
-  getMchtNum: data => axios.post('/huiShop/v1/getMchtNum', data)
+  getMchtNum: data => axios.post('/huiShop/v1/getMchtNum', data),
+  /** 获取标签列表 */
+  getLabelType: data => axios.get('/idc/ac/labelType/query.json', data)
 }
