@@ -9,16 +9,6 @@ export default {
   name: 'App',
   components: {
     TheAppLayout
-  },
-  created () {
-    // this.getLabelType()
-  },
-  methods: {
-    getLabelType () {
-      this.$Http.getLabelType({}).then(resp => {
-        console.log(resp)
-      })
-    }
   }
 }
 </script>

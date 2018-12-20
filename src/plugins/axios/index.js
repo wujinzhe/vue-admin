@@ -35,7 +35,7 @@ axios.interceptors.response.use(
   err => {
     // _config.response.err(err)
     let status = err.response.status || ''
-    return Promise.reject(new Error(err.response.data.errorInfo || `【${status}】服务器响应错误`))
+    return Promise.reject(new Error(err.response.data.msg || `【${status}】服务器响应错误`))
   }
 )
 
@@ -61,14 +61,14 @@ function request (method, url, data, config) {
     ..._config
   }).then(resp => {
     // 判断条件是否符合
-    if (resp.data.returnCode === '0') {
+    if (resp.data.code === '0' && resp.data.success) {
       return resp.data
-    } else if (resp.data.errorNo === '1006') {
+    } else if (resp.data.code === '1006') {
       // 登录状态失效，跳转登录
       return new Promise((resolve, reject) => {}) // 返回一个永远不响应的promise
     }
 
-    throw new Error(resp.data.errorInfo || '服务器异常，请重试') // 因为只有throw才会抛到下面的catch中
+    throw new Error(resp.data.msg || '服务器异常，请重试') // 因为只有throw才会抛到下面的catch中
   }).catch(err => {
     console.error('[error][盒伙人运管 网络请求错误]', err.message)
     Vue.prototype.$message.error(err.message)

@@ -21,6 +21,7 @@ module.exports = () => {
       clientLogLevel: 'warning',
       port: 8080,
       host: '0.0.0.0',
+      // https: true,
       quiet: true,
       hot: true,
       compress: true, // 一切服务都是用gzip压缩
