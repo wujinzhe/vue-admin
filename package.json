@@ -1,6 +1,6 @@
 {
   "name": "vue-admin-main",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "vue-admin-main",
   "public": true,
   "main": "index.js",
